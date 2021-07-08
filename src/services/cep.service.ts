@@ -13,10 +13,6 @@ export const CepService = {
     }
   },
   async getCepFromDatabase(cep: string) {
-    try {
-      return await Cep.findOne({ cep })
-    } catch (err) {
-      return false
-    }
+    return await Cep.findOne({ cep })
   }
 }

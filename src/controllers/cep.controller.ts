@@ -44,6 +44,8 @@ export const CepController = {
 
     if (!data) return next()
 
+    await Cache.set(data.cep, JSON.stringify(data))
+
     return res.json({
       bairro: data.bairro,
       cep: data.cep,
