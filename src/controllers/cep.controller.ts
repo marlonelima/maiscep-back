@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 
 import { CepService } from '../services/cep.service'
-import { Cep } from '../models/cep.model'
 
 import { Cache } from '../utils/redis'
 import { CepFormatter } from '../utils/formatter'
@@ -68,7 +67,7 @@ export const CepController = {
     if (data.erro)
       throw new MyError('O CEP não existe! Corrija e tente novamente.', 404)
 
-    await Cep.create(data)
+    await CepService.insertCepIntoDatabase(data)
 
     await Cache.set(data.cep, JSON.stringify(data))
 
