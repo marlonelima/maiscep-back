@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  api:
+    image: node:lts-alpine
+    working_dir: /usr/app
+    container_name: maiscep-api
+    environment:
+      - DB_URI=mongodb://mongo/maiscep
+      - REDIS_URI=redis
+    restart: always
+    volumes:
+      - './:/usr/app'
+      - './src:/usr/app/src'
+    ports:
+      - '3333:3333'
+    links:
+      - redis
+      - mongo
+    command: sh -c "yarn && yarn dev"
+  redis:
+    container_name: redis
+    image: redis:6.2.4-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+  mongo:
+    container_name: mongodb
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+  dashboard:
+    container_name: dashboard
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    ports:
+      - '8081:8081'
+    depends_on:
+      - mongo
