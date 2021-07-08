@@ -1,0 +1,24 @@
+name: API CI
+on: push
+
+jobs:
+  API:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checking repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Installing dependencies
+        run: yarn install
+
+      - name: Run Jest
+        run: yarn test --coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

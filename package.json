@@ -7,7 +7,8 @@
     "dev": "tsnd --poll --respawn --transpile-only src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
-    "test": "cross-env NODE_ENV=test jest"
+    "test": "cross-env NODE_ENV=test jest",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": "https://github.com/marlonelima/maiscep-back",
   "author": "Marlone Lima",
@@ -16,6 +17,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "coveralls-next": "^4.0.1",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
