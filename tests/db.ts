@@ -1,16 +1,20 @@
 import mongoose from 'mongoose'
+
 import { MongoMemoryServer } from 'mongodb-memory-server'
 
-const mongod = new MongoMemoryServer()
+export class DatabaseMock {
+  mongoServer: MongoMemoryServer
+  mongod: MongoMemoryServer
 
-let mongoServer: MongoMemoryServer
+  constructor() {
+    this.mongoServer = new MongoMemoryServer()
+    this.mongod = new MongoMemoryServer()
+  }
 
-export const db = {
   async connect() {
-    mongoServer = new MongoMemoryServer()
-    await mongoServer.start()
+    await this.mongoServer.start()
 
-    const mongoUri = mongoServer.getUri()
+    const mongoUri = this.mongoServer.getUri()
 
     await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
@@ -18,14 +22,15 @@ export const db = {
       useCreateIndex: true,
       useFindAndModify: false
     })
-  },
+  }
 
   async closeDatabase() {
     await mongoose.connection.dropDatabase()
     await mongoose.connection.close()
-    await mongoServer.stop()
-    await mongod.stop()
-  },
+
+    await this.mongoServer.stop()
+    await this.mongod.stop()
+  }
 
   async clearDatabase() {
     const collections = mongoose.connection.collections

@@ -1,14 +1,12 @@
 import mockRedis from 'redis-mock'
-import { db } from './db'
+import { DatabaseMock } from './db'
 
 jest.mock('redis', () => mockRedis)
 
-beforeAll(async () => {
-  await db.connect()
-})
+const db = new DatabaseMock()
+
+beforeAll(async () => await db.connect())
 
 beforeEach(async () => await db.clearDatabase())
 
-afterAll(async () => {
-  await db.closeDatabase()
-})
+afterAll(async () => await db.closeDatabase())
