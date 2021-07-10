@@ -2,6 +2,8 @@
 
 <a href='https://coveralls.io/github/marlonelima/maiscep-back?branch=main'><img src='https://coveralls.io/repos/github/marlonelima/maiscep-back/badge.svg?branch=main' alt='Coverage Status' /></a>
 
+<img src=".github/logo.svg" width="250" /><br/><br/>
+
 ### Quais tecnologias foram utilizadas?
 
 <ul>
@@ -32,7 +34,7 @@ O segundo sistema de cache é o banco de dados não relacional do MongoDB. Lá o
 
 ### Continuous Integration
 
-Foi definido um processo de Continuous Integration utilizando o GitHub Action e o Coveralls. Para mais detalhes, visite a seção <a href="https://github.com/marlonelima/maiscep-back/actions">Actions</a>.<br/>
+Foi definido um processo de Continuous Integration utilizando o GitHub Action e o Coveralls. Para mais detalhes, visite a seção <a href="https://github.com/marlonelima/maiscep-back/actions">Actions</a>.<br/><br/>
 
 ### ESLint e Prettier
 
