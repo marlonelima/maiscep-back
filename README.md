@@ -22,17 +22,17 @@ Certifique-se de ter o Docker Compose e apenas execute o comando `docker-compose
 #### Como rodar os testes?
 
 Após instalar todas as dependências, rode o comando `npm run test` ou `yarn test` para executar os testes automatizados. Será gerado um relatório na pasta `coverage` em sua máquina.
-<br/>
+<br/><br/>
 
 ### Sobre o sistema de cache
 
 A API foi projetada com dois sistemas de cache. O primeiro sistema de cache e o preferencial é o cache com o banco de dados Redis. Ele é preferencial pelo motivo de ser um banco de dados em memória e ser mais rápido, além de desgastar menos o banco de dados principal.
 O segundo sistema de cache é o banco de dados não relacional do MongoDB. Lá os dados serão armazenados permanentemente e somente será acessado caso o cache do Redis não tenha tal informação. Se nenhum dos dois tiver a informação requerida, a API do Via Cep será acionada.
-<br/>
+<br/><br/>
 
 ### Continuous Integration
 
-Foi definido um processo de Continuous Integration utilizando o GitHub Action. Para mais detalhes, visite a seção <a href="https://github.com/marlonelima/maiscep-back/actions">Actions</a>.<br/>
+Foi definido um processo de Continuous Integration utilizando o GitHub Action e o Coveralls. Para mais detalhes, visite a seção <a href="https://github.com/marlonelima/maiscep-back/actions">Actions</a>.<br/>
 
 ### ESLint e Prettier
 
